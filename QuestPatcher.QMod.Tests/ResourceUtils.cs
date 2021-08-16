@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 
 namespace QuestPatcher.QMod.Tests
@@ -6,7 +7,7 @@ namespace QuestPatcher.QMod.Tests
     public static class ResourceUtils
     {
         private const string ResourcePrefix = "QuestPatcher.QMod.Tests.Resources.";
-        private static Assembly _executingAssembly = Assembly.GetExecutingAssembly();
+        private static readonly Assembly ExecutingAssembly = Assembly.GetExecutingAssembly();
 
         /// <summary>
         /// Opens the resource in the tests assembly with the given name.
@@ -15,7 +16,13 @@ namespace QuestPatcher.QMod.Tests
         /// <returns>A stream to read from the resource</returns>
         public static Stream OpenResource(string name)
         {
-            return _executingAssembly.GetManifestResourceStream(ResourcePrefix + name);
+            Stream? result = ExecutingAssembly.GetManifestResourceStream(ResourcePrefix + name);
+            if(result == null)
+            {
+                throw new NullReferenceException($"No resource exists with name {name}");
+            }
+
+            return result;
         }
     }
 }

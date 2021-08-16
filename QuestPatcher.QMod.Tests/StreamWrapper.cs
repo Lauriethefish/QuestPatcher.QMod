@@ -2,7 +2,6 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using JetBrains.Annotations;
 
 namespace QuestPatcher.QMod.Tests
 {
@@ -14,7 +13,7 @@ namespace QuestPatcher.QMod.Tests
         private readonly Stream _underlying;
         private bool _disposed;
 
-        public StreamWrapper([CanBeNull] Stream underlying = null)
+        public StreamWrapper(Stream? underlying = null)
         {
             _underlying = underlying ?? new MemoryStream();
         }

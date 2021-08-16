@@ -22,7 +22,7 @@ namespace QuestPatcher.QMod.Tests
             await using QMod doesNotThrow = await LoadModFromResource("testContainsFiles.qmod", true, true);
             
             // Test that no files have been removed, as they all exist in the archive
-            await using QMod mod = await LoadModFromResource("testContainsFiles.qmod", false, false);
+            await using QMod mod = await LoadModFromResource("testContainsFiles.qmod", false);
             Assert.Equal(new List<string>{"libexample-mod.so"}, mod.ModFileNames);
             Assert.Equal(new List<string>{"libmy-library.so"}, mod.LibraryFileNames);
             Assert.NotNull(mod.CoverImagePath);
@@ -85,7 +85,7 @@ namespace QuestPatcher.QMod.Tests
         public async Task TestMissingCover()
         {
             // Test that this does not throw, but sets the cover to null
-            await using QMod mod = await LoadModFromResource("testMissingCover.qmod", true, false);
+            await using QMod mod = await LoadModFromResource("testMissingCover.qmod");
             Assert.Null(mod.CoverImagePath);
             
             // Test that this does throw, as the cover is missing and we have set to throw

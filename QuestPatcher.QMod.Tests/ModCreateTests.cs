@@ -4,7 +4,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
-using SemanticVersioning;
 using Xunit;
 using Version = SemanticVersioning.Version;
 
@@ -27,7 +26,8 @@ namespace QuestPatcher.QMod.Tests
             await createFile();
 
             ZipArchiveEntry? entry = mod.Archive.GetEntry(entryName);
-            Assert.NotNull(entry);
+            if(entry == null) { throw new NullReferenceException($"Could not find entry {entryName}"); }
+            
             await using Stream stream = entry.Open();
 
             await using MemoryStream resultStream = new();

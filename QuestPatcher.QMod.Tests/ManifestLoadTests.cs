@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
-using SemanticVersioning;
 using Xunit;
-using Range = SemanticVersioning.Range;
-using Version = SemanticVersioning.Version;
 
 namespace QuestPatcher.QMod.Tests
 {
@@ -30,13 +26,13 @@ namespace QuestPatcher.QMod.Tests
             Assert.Equal(new List<string> {"libexample-mod.so"}, manifest.ModFileNames);
             Assert.Equal(new List<string> {"libmy-library.so"}, manifest.LibraryFileNames);
 
-            Assert.Equal(1, manifest.Dependencies.Count);
+            Assert.Single(manifest.Dependencies);
             Dependency dependency = manifest.Dependencies[0];
             Assert.Equal("my-dependency", dependency.Id);
             Assert.Equal("^0.1.0", dependency.VersionRangeString);
             Assert.Equal("https://somesite.com/my_dependency_0_1_0.qmod", dependency.DownloadUrlString);
 
-            Assert.Equal(1, manifest.FileCopies.Count);
+            Assert.Single(manifest.FileCopies);
             FileCopy fileCopy = manifest.FileCopies[0];
             Assert.Equal("myFile.png", fileCopy.Name);
             Assert.Equal("/sdcard/ModData/com.my.game/myFile.png", fileCopy.Destination);
