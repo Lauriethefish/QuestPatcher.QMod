@@ -1,0 +1,31 @@
+﻿{
+  "_QPVersion": "0.1.1",
+  "name": "ExampleMod",
+  "id": "example-mod",
+  "version": "2.0.0",
+  "packageId": "com.my.game",
+  "packageVersion": "1.0.0",
+  "coverImage": "myCover.png",
+  "porter": "Larrythefish",
+  "description": "Example mod",
+  "isLibrary": fals
+  "modFiles": [
+    "libexample-mod.so"
+  ]
+  "libraryFiles": [
+    "libmy-library.so"
+  ],
+  "dependencies": [
+    {
+      "id": "my-dependency",
+      "version": "^0.1.0",
+      "downloadIfMissing": "https://somesite.com/my_dependency_0_1_0.qmod"
+    }
+  ],
+  "fileCopies": [
+    {
+      "name": "myFile.png",
+      "destination": "/sdcard/ModData/com.my.game/myFile.png"
+    }
+  ]
+}
