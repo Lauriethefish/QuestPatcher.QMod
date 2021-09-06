@@ -136,10 +136,11 @@ namespace QuestPatcher.QMod
         private static readonly HashSet<string> SupportedSchemaVersions = new[]
         {
             "0.1.0",
-            "0.1.1"
+            "0.1.1",
+            "0.1.2"
         }.ToHashSet();
 
-        private const string LatestSchemaVersion = "0.1.1";
+        private const string LatestSchemaVersion = "0.1.2";
 
         private static readonly JsonSerializerOptions SerializerOptions = new JsonSerializerOptions()
         {
