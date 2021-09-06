@@ -375,7 +375,7 @@
             "$id": "#/properties/copyExtensions/items/properties/extension",
             "type": "string",
             "title": "Extension",
-            "description": "The file extension to register.",
+            "description": "The file extension to register. Without a period prefix!",
             "default": "",
             "examples": [
               "gtmap"
