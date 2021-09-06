@@ -363,7 +363,7 @@
         "examples": [
           {
             "extension": "myFileExtension",
-            "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag"
+            "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
           }
         ],
         "required": [
@@ -388,7 +388,7 @@
             "description": "The destination in which files will be copied to with the specified extension.",
             "default": "",
             "examples": [
-              "/sdcard/ModData/com.AnotherAxiom.GorillaTag"
+              "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
             ]
           }
         },
