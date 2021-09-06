@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -184,6 +185,35 @@ namespace QuestPatcher.QMod
             // _id has been set by assigning the property.
             // We don't just assign the field directly as we need to check that the ID string is valid using the property setter
             Debug.Assert(_id != null);
+        }
+        
+        /// <summary>
+        /// Creates a new <see cref="QModManifest"/> with a deep clone.
+        /// </summary>
+        /// <returns></returns>
+        public QModManifest DeepClone()
+        {
+            return new QModManifest(Id, Name, Version, PackageId, PackageVersion, Author)
+            {
+                IsLibrary = IsLibrary,
+                Description = Description,
+                CoverImagePath = CoverImagePath,
+                Porter = Porter,
+                SchemaVersion = SchemaVersion,
+                FileCopies = FileCopies.Select(copy => new FileCopy(copy.Name, copy.Destination)).ToList(),
+                Dependencies = Dependencies.Select(dep => new Dependency(dep.Id, dep.VersionRangeString, dep.DownloadUrlString)).ToList(),
+                ModFileNames = ModFileNames.ToList(),
+                LibraryFileNames = LibraryFileNames.ToList()
+            };
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="QModManifest"/> with a shallow copy
+        /// </summary>
+        /// <returns></returns>
+        public QModManifest ShallowClone()
+        {
+            return (QModManifest) MemberwiseClone();
         }
 
         /// <summary>
