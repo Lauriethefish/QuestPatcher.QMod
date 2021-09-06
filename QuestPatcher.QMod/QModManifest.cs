@@ -104,6 +104,11 @@ namespace QuestPatcher.QMod
         /// Dependencies of the mod
         /// </summary>
         public List<Dependency> Dependencies { get; set; } = new List<Dependency>();
+
+        /// <summary>
+        /// File copy extensions to be registered by this mod
+        /// </summary>
+        public List<CopyExtension> CopyExtensions { get; set; } = new List<CopyExtension>();
         
         /// <summary>
         /// A short description of what the mod does
@@ -202,6 +207,7 @@ namespace QuestPatcher.QMod
                 SchemaVersion = SchemaVersion,
                 FileCopies = FileCopies.Select(copy => new FileCopy(copy.Name, copy.Destination)).ToList(),
                 Dependencies = Dependencies.Select(dep => new Dependency(dep.Id, dep.VersionRangeString, dep.DownloadUrlString)).ToList(),
+                CopyExtensions = CopyExtensions.Select(ext => new CopyExtension(ext.Extension, ext.Destination)).ToList(),
                 ModFileNames = ModFileNames.ToList(),
                 LibraryFileNames = LibraryFileNames.ToList()
             };
