@@ -349,7 +349,7 @@
         [
           {
             "extension": "gtmap",
-            "path": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
+            "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
           }
         ]
       ],
