@@ -348,8 +348,8 @@
       "examples": [
         [
           {
-            "extension": "myFileExtension",
-            "path": "/sdcard/ModData/com.AnotherAxiom.GorillaTag"
+            "extension": "gtmap",
+            "path": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
           }
         ]
       ],
@@ -362,7 +362,7 @@
         "default": "",
         "examples": [
           {
-            "extension": "myFileExtension",
+            "extension": "gtmap",
             "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
           }
         ],
@@ -378,7 +378,7 @@
             "description": "The file extension to register.",
             "default": "",
             "examples": [
-              "myFileExtension"
+              "gtmap"
             ]
           },
           "destination": {
