@@ -1,5 +1,5 @@
 ﻿{
-  "_QPVersion": "0.1.1",
+  "_QPVersion": "0.1.2",
   "name": "ExampleMod",
   "id": "example-mod",
   "author": "Lauriethefish",
@@ -27,6 +27,12 @@
     {
       "name": "myFile.png",
       "destination": "/sdcard/ModData/com.my.game/myFile.png"
+    }
+  ],
+  "copyExtensions": [
+    {
+      "extension": "gtmap",
+      "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
     }
   ]
 }

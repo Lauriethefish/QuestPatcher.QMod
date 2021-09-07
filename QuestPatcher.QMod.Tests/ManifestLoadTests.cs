@@ -36,6 +36,11 @@ namespace QuestPatcher.QMod.Tests
             FileCopy fileCopy = manifest.FileCopies[0];
             Assert.Equal("myFile.png", fileCopy.Name);
             Assert.Equal("/sdcard/ModData/com.my.game/myFile.png", fileCopy.Destination);
+
+            Assert.Single(manifest.CopyExtensions);
+            CopyExtension extension = manifest.CopyExtensions[0];
+            Assert.Equal("gtmap", extension.Extension);
+            Assert.Equal("/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/", extension.Destination);
         }
 
         [Fact]

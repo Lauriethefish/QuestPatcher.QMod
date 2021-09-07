@@ -92,6 +92,11 @@ namespace QuestPatcher.QMod
         public List<Dependency> Dependencies { get => _manifest.Dependencies; set => SetValue(_manifest.Dependencies, value, v => _manifest.Dependencies = v); }
         
         /// <summary>
+        /// File copy extensions to be registered by this mod
+        /// </summary>
+        public List<CopyExtension> CopyExtensions { get => _manifest.CopyExtensions; set => SetValue(_manifest.CopyExtensions, value, v => _manifest.CopyExtensions = v); }
+        
+        /// <summary>
         /// A short description of what the mod does
         /// </summary>
         public string? Description { get => _manifest.Description; set => SetValue(_manifest.Description, value, v => _manifest.Description = v); }

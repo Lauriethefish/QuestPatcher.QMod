@@ -5,7 +5,7 @@
   "description": "A mod of the format described by QuestPatcher.",
   "examples": [
     {
-      "_QPVersion": "0.1.1",
+      "_QPVersion": "0.1.2",
       "name": "ExampleMod2",
       "id": "example-mod-2",
       "author": "Lauriethefish#6700",
@@ -30,6 +30,12 @@
         {
           "name": "myFile.png",
           "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/myFile.png"
+        }
+      ],
+      "copyExtensions": [
+        {
+          "extension": "myFileExtension",
+          "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag"
         }
       ]
     }
@@ -56,12 +62,13 @@
       "$id": "#/properties/_QPVersion",
       "enum": [
         "0.1.0",
-        "0.1.1"
+        "0.1.1",
+        "0.1.2"
       ],
       "default": "",
-      "description": "The version of the schema to use for QuestPatcher. Must be 0.1.0 or 0.1.1",
+      "description": "The version of the schema to use for QuestPatcher. Must be 0.1.0, 0.1.1 or 0.1.2",
       "examples": [
-        "0.1.1"
+        "0.1.2"
       ],
       "title": "QuestPatcher Version",
       "type": "string"
@@ -326,6 +333,62 @@
             "default": "",
             "examples": [
               "/sdcard/ModData/com.AnotherAxiom.GorillaTag/myFile.png"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "copyExtensions": {
+      "$id": "#/properties/copyExtensions",
+      "type": "array",
+      "title": "Copy Extensions",
+      "description": "Extensions to be registered when attempting to copy a file.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "extension": "gtmap",
+            "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
+          }
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/copyExtensions/items",
+        "type": "object",
+        "title": "Copy Extension",
+        "description": "An extension the Quest knows where to copy.",
+        "default": "",
+        "examples": [
+          {
+            "extension": "gtmap",
+            "destination": "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
+          }
+        ],
+        "required": [
+          "extension",
+          "destination"
+        ],
+        "properties": {
+          "extension": {
+            "$id": "#/properties/copyExtensions/items/properties/extension",
+            "type": "string",
+            "title": "Extension",
+            "description": "The file extension to register. Without a period prefix!",
+            "default": "",
+            "examples": [
+              "gtmap"
+            ]
+          },
+          "destination": {
+            "$id": "#/properties/copyExtensions/items/properties/destination",
+            "type": "string",
+            "title": "Destination",
+            "description": "The destination in which files will be copied to with the specified extension.",
+            "default": "",
+            "examples": [
+              "/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/"
             ]
           }
         },
