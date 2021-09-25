@@ -221,6 +221,15 @@ namespace QuestPatcher.QMod
             ManifestModified = true;
         }
 
+        /// <summary>
+        /// Clones the manifest, and returns the clone.
+        /// </summary>
+        /// <returns>A deep clone of the current manifest of this mod</returns>
+        public QModManifest GetManifest()
+        {
+            return _manifest.DeepClone();
+        }
+
         private void SetValue<T>(T currentValue, T newValue, Action<T> setValue)
         {
             if (!CanSaveManifest)
