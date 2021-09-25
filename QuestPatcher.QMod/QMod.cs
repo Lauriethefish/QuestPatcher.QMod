@@ -697,7 +697,7 @@ namespace QuestPatcher.QMod
             if (entry == null) { return; }
             if (ArchiveMode == ZipArchiveMode.Create)
             {
-                throw new InvalidOperationException(isOverwriting ? "Cannot overwrite file in a QMOD with an archive set to ZipArchiveMode.Create" : "Cannot delete a file in a QMOD with an archive set to ZipArchiveMode.Delete");
+                throw new InvalidOperationException(isOverwriting ? "Cannot overwrite file in a QMOD with an archive set to ZipArchiveMode.Create" : "Cannot delete a file in a QMOD with an archive set to ZipArchiveMode.Create");
             }
             entry.Delete();
         }
