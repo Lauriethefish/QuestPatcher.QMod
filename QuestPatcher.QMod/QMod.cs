@@ -57,7 +57,7 @@ namespace QuestPatcher.QMod
         /// <summary>
         /// The package ID of the app that the mod is designed for.
         /// </summary>
-        public string PackageId { get => _manifest.PackageId; set => SetValue(_manifest.PackageId, value, v => _manifest.PackageId = v); }
+        public string? PackageId { get => _manifest.PackageId; set => SetValue(_manifest.PackageId, value, v => _manifest.PackageId = v); }
 
         /// <summary>
         /// The version of the app that the mod is designed for.

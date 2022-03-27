@@ -46,7 +46,6 @@
     "id",
     "author",
     "version",
-    "packageId",
     "packageVersion"
   ],
   "anyOf": [
@@ -129,7 +128,7 @@
     "packageId": {
       "$id": "#/properties/packageId",
       "default": "",
-      "description": "The Android package ID of the target package.",
+      "description": "The Android package ID of the target package. If not present, this indicates that the mod works on any package.",
       "examples": [
         "com.AnotherAxiom.GorillaTag"
       ],
