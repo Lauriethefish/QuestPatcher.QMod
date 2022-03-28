@@ -178,7 +178,7 @@ namespace QuestPatcher.QMod
         /// <param name="packageId">ID of the Android app this mod is intended for</param>
         /// <param name="packageVersion">Version of the Android ap this mod is intended for</param>
         /// <param name="author">Author of the mod</param>
-        public QModManifest(string id, string name, Version version, string packageId, string packageVersion, string author)
+        public QModManifest(string id, string name, Version version, string? packageId, string packageVersion, string author)
         {
             SchemaVersion = LatestSchemaVersion;
             
