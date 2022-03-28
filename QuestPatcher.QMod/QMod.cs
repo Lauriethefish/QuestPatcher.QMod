@@ -63,7 +63,7 @@ namespace QuestPatcher.QMod
         /// <summary>
         /// The version of the app that the mod is designed for.
         /// If null, this means that the mod doesn't depend on a particular version of an app.
-        /// Specifying this is redundant if <see cref="PackageId"/> is specified.
+        /// This property is redundant if <see cref="PackageId"/> is null.
         /// </summary>
         public string? PackageVersion { get => _manifest.PackageVersion; set => SetValue(_manifest.PackageVersion, value, v => _manifest.PackageVersion = v); }
 
