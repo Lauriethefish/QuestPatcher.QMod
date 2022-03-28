@@ -45,8 +45,7 @@
     "name",
     "id",
     "author",
-    "version",
-    "packageVersion"
+    "version"
   ],
   "anyOf": [
     { "required": [ "modFiles" ] },
@@ -138,7 +137,7 @@
     "packageVersion": {
       "$id": "#/properties/packageVersion",
       "default": "",
-      "description": "The Android package version of the target package.",
+      "description": "The Android package version of the target package. If not specified, the mod does not depend on any particular package version. Specifying this is redundant if packageId is not specified.",
       "examples": [
         "1.0.1"
       ],

@@ -56,13 +56,16 @@ namespace QuestPatcher.QMod
         
         /// <summary>
         /// The package ID of the app that the mod is designed for.
+        /// If null, this means that the mod works for any app.
         /// </summary>
         public string? PackageId { get => _manifest.PackageId; set => SetValue(_manifest.PackageId, value, v => _manifest.PackageId = v); }
 
         /// <summary>
         /// The version of the app that the mod is designed for.
+        /// If null, this means that the mod doesn't depend on a particular version of an app.
+        /// Specifying this is redundant if <see cref="PackageId"/> is specified.
         /// </summary>
-        public string PackageVersion { get => _manifest.PackageVersion; set => SetValue(_manifest.PackageVersion, value, v => _manifest.PackageVersion = v); }
+        public string? PackageVersion { get => _manifest.PackageVersion; set => SetValue(_manifest.PackageVersion, value, v => _manifest.PackageVersion = v); }
 
         /// <summary>
         /// Whether or not the mod is a library mod.
