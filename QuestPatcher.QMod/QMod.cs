@@ -218,7 +218,7 @@ namespace QuestPatcher.QMod
         /// <param name="packageVersion">Version of the Android ap this mod is intended for</param>
         /// <param name="author">Author of the mod</param>
         /// <exception cref="ArgumentException">If the given stream does not support  writing</exception>
-        public QMod(Stream stream, string id, string name, Version version, string? packageId, string packageVersion, string author, ZipArchiveMode? archiveMode = null)
+        public QMod(Stream stream, string id, string name, Version version, string? packageId, string? packageVersion, string author, ZipArchiveMode? archiveMode = null)
             : this(new ZipArchive(stream, FindArchiveMode(stream, archiveMode, "Cannot create a QMOD using a stream that does not support writing", "Cannot create a QMOD using ZipArchiveMode.Read", false, true)), new QModManifest(id, name, version, packageId, packageVersion, author))
         {
             ManifestModified = true;
