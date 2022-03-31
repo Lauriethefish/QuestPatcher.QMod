@@ -54,7 +54,7 @@ namespace QuestPatcher.QMod
         /// Simply converts/parses the <see cref="Version"/> property to/from a string.
         /// </summary>
         [JsonPropertyName("version")]
-        public string VersionString
+        public string? VersionString
         {
             get => Version.ToString();
             set => Version = Version.Parse(value);
@@ -68,13 +68,16 @@ namespace QuestPatcher.QMod
         
         /// <summary>
         /// The package ID of the app that the mod is designed for.
+        /// If null, this means that the mod works for any app.
         /// </summary>
-        public string PackageId { get; set; }
+        public string? PackageId { get; set; }
 
         /// <summary>
         /// The version of the app that the mod is designed for.
+        /// If null, this means that the mod doesn't depend on a particular version of an app.
+        /// This property is redundant if <see cref="PackageId"/> is null.
         /// </summary>
-        public string PackageVersion { get; set; }
+        public string? PackageVersion { get; set; }
 
         /// <summary>
         /// Whether or not the mod is a library mod.
@@ -137,10 +140,11 @@ namespace QuestPatcher.QMod
         {
             "0.1.0",
             "0.1.1",
-            "0.1.2"
+            "0.1.2",
+            "1.0.0"
         }.ToHashSet();
 
-        private const string LatestSchemaVersion = "0.1.2";
+        private const string LatestSchemaVersion = "1.0.0";
 
         private static readonly JsonSerializerOptions SerializerOptions = new JsonSerializerOptions()
         {
@@ -177,7 +181,7 @@ namespace QuestPatcher.QMod
         /// <param name="packageId">ID of the Android app this mod is intended for</param>
         /// <param name="packageVersion">Version of the Android ap this mod is intended for</param>
         /// <param name="author">Author of the mod</param>
-        public QModManifest(string id, string name, Version version, string packageId, string packageVersion, string author)
+        public QModManifest(string id, string name, Version version, string? packageId, string? packageVersion, string author)
         {
             SchemaVersion = LatestSchemaVersion;
             

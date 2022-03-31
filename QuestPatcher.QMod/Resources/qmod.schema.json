@@ -5,7 +5,7 @@
   "description": "A mod of the format described by QuestPatcher.",
   "examples": [
     {
-      "_QPVersion": "0.1.2",
+      "_QPVersion": "1.0.0",
       "name": "ExampleMod2",
       "id": "example-mod-2",
       "author": "Lauriethefish#6700",
@@ -45,9 +45,7 @@
     "name",
     "id",
     "author",
-    "version",
-    "packageId",
-    "packageVersion"
+    "version"
   ],
   "anyOf": [
     { "required": [ "modFiles" ] },
@@ -63,14 +61,15 @@
       "enum": [
         "0.1.0",
         "0.1.1",
-        "0.1.2"
+        "0.1.2",
+        "1.0.0"
       ],
       "default": "",
-      "description": "The version of the schema to use for QuestPatcher. Must be 0.1.0, 0.1.1 or 0.1.2",
+      "description": "The version of the schema to use for QuestPatcher. Must be 0.1.0, 0.1.1, 0.1.2 or 1.0.0",
       "examples": [
-        "0.1.2"
+        "1.0.0"
       ],
-      "title": "QuestPatcher Version",
+      "title": "Schema Version",
       "type": "string"
     },
     "name": {
@@ -128,7 +127,7 @@
     "packageId": {
       "$id": "#/properties/packageId",
       "default": "",
-      "description": "The Android package ID of the target package.",
+      "description": "The Android package ID of the target package. If not present, this indicates that the mod works on any package.",
       "examples": [
         "com.AnotherAxiom.GorillaTag"
       ],
@@ -138,7 +137,7 @@
     "packageVersion": {
       "$id": "#/properties/packageVersion",
       "default": "",
-      "description": "The Android package version of the target package.",
+      "description": "The Android package version of the target package. If not specified, the mod does not depend on any particular package version. Specifying this is redundant if packageId is not specified.",
       "examples": [
         "1.0.1"
       ],

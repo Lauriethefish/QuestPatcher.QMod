@@ -56,13 +56,16 @@ namespace QuestPatcher.QMod
         
         /// <summary>
         /// The package ID of the app that the mod is designed for.
+        /// If null, this means that the mod works for any app.
         /// </summary>
-        public string PackageId { get => _manifest.PackageId; set => SetValue(_manifest.PackageId, value, v => _manifest.PackageId = v); }
+        public string? PackageId { get => _manifest.PackageId; set => SetValue(_manifest.PackageId, value, v => _manifest.PackageId = v); }
 
         /// <summary>
         /// The version of the app that the mod is designed for.
+        /// If null, this means that the mod doesn't depend on a particular version of an app.
+        /// This property is redundant if <see cref="PackageId"/> is null.
         /// </summary>
-        public string PackageVersion { get => _manifest.PackageVersion; set => SetValue(_manifest.PackageVersion, value, v => _manifest.PackageVersion = v); }
+        public string? PackageVersion { get => _manifest.PackageVersion; set => SetValue(_manifest.PackageVersion, value, v => _manifest.PackageVersion = v); }
 
         /// <summary>
         /// Whether or not the mod is a library mod.
@@ -215,7 +218,7 @@ namespace QuestPatcher.QMod
         /// <param name="packageVersion">Version of the Android ap this mod is intended for</param>
         /// <param name="author">Author of the mod</param>
         /// <exception cref="ArgumentException">If the given stream does not support  writing</exception>
-        public QMod(Stream stream, string id, string name, Version version, string packageId, string packageVersion, string author, ZipArchiveMode? archiveMode = null)
+        public QMod(Stream stream, string id, string name, Version version, string? packageId, string? packageVersion, string author, ZipArchiveMode? archiveMode = null)
             : this(new ZipArchive(stream, FindArchiveMode(stream, archiveMode, "Cannot create a QMOD using a stream that does not support writing", "Cannot create a QMOD using ZipArchiveMode.Read", false, true)), new QModManifest(id, name, version, packageId, packageVersion, author))
         {
             ManifestModified = true;
@@ -447,7 +450,7 @@ namespace QuestPatcher.QMod
             {
                 if(ModFileNames.Contains(path))
                 {
-                   DeleteEntry(existing, true);
+                    DeleteEntry(existing, true);
                 }   
                 else
                 {
