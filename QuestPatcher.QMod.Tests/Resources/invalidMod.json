@@ -11,7 +11,7 @@
   "isLibrary": false,
   "modFiles": [
     "libexample-mod.so"
-  ]
+  ],
   "libraryFiles": [
     "libmy-library.so"
   ],
