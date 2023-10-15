@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -304,7 +305,7 @@ namespace QuestPatcher.QMod
             }
             
             // Validate that the document matches the QMOD schema
-            ValidationResults results = Schema.Validate(document.RootElement);
+            EvaluationResults results = Schema.Evaluate(document.RootElement);
             
             if (!results.IsValid)
             {
@@ -321,9 +322,18 @@ namespace QuestPatcher.QMod
                         throw new UnsupportedSchemaVersionException(version);
                     }
                 }
-                
-                // results.Message is always null: TODO: Figure out why
-                throw new InvalidModException($"QMOD schema validation failed: {results.Message}");
+
+                // TODO: results.Errors is always empty. Maybe we need to recursively search for errors?
+                var errors = new StringBuilder();
+                if(results.Errors != null)
+                {
+                    foreach(var pair in results.Errors)
+                    {
+                        errors.AppendLine($"{pair.Key}: {pair.Value}");
+                    }
+                }
+
+                throw new InvalidModException($"QMOD schema validation failed: {errors}");
             }
             
             // Now we attempt to parse the QMOD
