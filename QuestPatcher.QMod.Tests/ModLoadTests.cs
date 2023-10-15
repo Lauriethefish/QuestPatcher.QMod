@@ -25,6 +25,8 @@ namespace QuestPatcher.QMod.Tests
             await using QMod mod = await LoadModFromResource("testContainsFiles.qmod", false);
             Assert.Equal(new List<string>{"libexample-mod.so"}, mod.ModFileNames);
             Assert.Equal(new List<string>{"libmy-library.so"}, mod.LibraryFileNames);
+            Assert.Equal(new List<string> { "libmy-late-mod.so" }, mod.LateModFileNames);
+
             Assert.NotNull(mod.CoverImagePath);
         }
 
@@ -122,7 +124,21 @@ namespace QuestPatcher.QMod.Tests
                 await LoadModFromResource("testMissingLibFile.qmod", true, true);
             });
         }
-        
+
+        [Fact]
+        public async Task TestMissingLateModFile()
+        {
+            // Test that this does not throw, but removes the library file from the list
+            await using QMod mod = await LoadModFromResource("testMissingLateModFile.qmod", false, true);
+            Assert.Empty(mod.LateModFileNames);
+
+            // Test that this does throw, as a library file is missing and we have set to throw
+            await Assert.ThrowsAsync<ModMissingFileException>(async () =>
+            {
+                await LoadModFromResource("testMissingLateModFile.qmod", true, true);
+            });
+        }
+
         [Fact]
         public async Task TestMissingFileCopy()
         {
