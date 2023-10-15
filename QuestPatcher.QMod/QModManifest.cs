@@ -84,13 +84,26 @@ namespace QuestPatcher.QMod
         /// Library mods should be automatically uninstalled whenever no mods that depend on them are installed
         /// </summary>
         public bool IsLibrary { get; set; }
+        
+        /// <summary>
+        /// Modloader this mod is made for. Either of 'QuestLoader' or 'Scotland2'
+        /// </summary>
+        [JsonPropertyName("modloader")]
+        public string ModLoader { get; set; }
 
         /// <summary>
-        /// Files copied to the mod loader's mods directory
+        /// Files copied to the mod loader's early mods directory
         /// </summary>
         [JsonPropertyName("modFiles")]
         public List<string> ModFileNames { get; set; } = new List<string>();
 
+
+        /// <summary>
+        /// Files copied to the mod loader's late mods directory
+        /// </summary>
+        [JsonPropertyName("lateModFiles")]
+        public List<string> LateModFileNames { get; set; } = new List<string>();
+        
         /// <summary>
         /// Files copied to the mod loader's libraries directory.
         /// Ideally, when uninstalling mods, these files should only be removed if no other installed/enabled mod has a library with the same name.

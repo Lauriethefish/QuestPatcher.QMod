@@ -49,6 +49,7 @@
   ],
   "anyOf": [
     { "required": [ "modFiles" ] },
+    { "required": [ "lateModFiles" ] },
     { "required": [ "libraryFiles" ] },
     { "required": [ "dependencies" ] },
     { "required": [ "fileCopies" ] }
@@ -62,12 +63,13 @@
         "0.1.0",
         "0.1.1",
         "0.1.2",
-        "1.0.0"
+        "1.0.0",
+        "1.0.1"
       ],
       "default": "",
-      "description": "The version of the schema to use for QuestPatcher. Must be 0.1.0, 0.1.1, 0.1.2 or 1.0.0",
+      "description": "The version of the schema to use for QuestPatcher. Must be 0.1.0, 0.1.1, 0.1.2, 1.0.0, 1.0.1",
       "examples": [
-        "1.0.0"
+        "1.0.1"
       ],
       "title": "Schema Version",
       "type": "string"
@@ -164,6 +166,20 @@
       "title": "Mod cover image",
       "type": "string"
     },
+    "modloader": {
+      "$id": "#/properties/modloader",
+      "enum": [
+        "QuestLoader",
+        "Scotland2"
+      ],
+      "default": "QuestLoader",
+      "description": "The modloader that this mod is for. If not specified, this mod is for QuestLoader because of backwards compatibility.",
+      "examples": [
+        "Scotland2"
+      ],
+      "title": "Modloader",
+      "type": "string"
+    },
     "modFiles": {
       "$id": "#/properties/modFiles",
       "default": [],
@@ -183,6 +199,30 @@
         "title": "Mod File",
         "default": "",
         "description": "A file to install as a mod.",
+        "examples": [
+          "libexample-mod-2.so"
+        ]
+      }
+    },
+    "lateModFiles": {
+      "$id": "#/properties/lateModFiles",
+      "default": [],
+      "description": "The files to install as late mods.",
+      "examples": [
+        [
+          "libexample-mod-2.so"
+        ]
+      ],
+      "title": "Late Mod Files",
+      "uniqueItems": true,
+      "type": "array",
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/lateModFiles/items",
+        "type": "string",
+        "title": "Late Mod File",
+        "default": "",
+        "description": "A file to install as a late mod.",
         "examples": [
           "libexample-mod-2.so"
         ]

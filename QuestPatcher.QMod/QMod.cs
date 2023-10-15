@@ -68,6 +68,30 @@ namespace QuestPatcher.QMod
         public string? PackageVersion { get => _manifest.PackageVersion; set => SetValue(_manifest.PackageVersion, value, v => _manifest.PackageVersion = v); }
 
         /// <summary>
+        /// The modloader this mod uses
+        /// If none is specified QuestLoader is returned
+        /// </summary>
+        public ModLoader? ModLoader
+        {
+            get
+            {
+                switch(_manifest.ModLoader)
+                {
+                    case "QuestLoader":
+                        return QuestPatcher.QMod.ModLoader.QuestLoader;
+                    case "Scotland2":
+                        return QuestPatcher.QMod.ModLoader.Scotland2;
+                    default:
+                        return QuestPatcher.QMod.ModLoader.QuestLoader;
+                }
+            }
+            set {
+                
+                SetValue<string>(_manifest.ModLoader, Enum.GetName(typeof(QuestPatcher.QMod.ModLoader), value), v => _manifest.ModLoader = v);
+            }
+        }
+
+        /// <summary>
         /// Whether or not the mod is a library mod.
         /// Library mods should be automatically uninstalled whenever no mods that depend on them are installed
         /// </summary>
@@ -77,6 +101,11 @@ namespace QuestPatcher.QMod
         /// Files copied to the mod loader's mods directory
         /// </summary>
         public IReadOnlyList<string> ModFileNames => _manifest.ModFileNames;
+        
+        /// <summary>
+        /// Files copied to the mod loader's mods directory
+        /// </summary>
+        public IReadOnlyList<string> LateModFileNames => _manifest.LateModFileNames;
 
         /// <summary>
         /// Files copied to the mod loader's libraries directory.
