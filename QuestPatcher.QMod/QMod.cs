@@ -71,7 +71,7 @@ namespace QuestPatcher.QMod
         /// The modloader this mod uses
         /// If none is specified QuestLoader is returned
         /// </summary>
-        public ModLoader? ModLoader
+        public ModLoader ModLoader
         {
             get
             {
