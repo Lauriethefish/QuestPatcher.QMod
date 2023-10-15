@@ -556,7 +556,82 @@ namespace QuestPatcher.QMod
                 _manifest.LibraryFileNames.Add(path);
             }
         }
-        
+
+        /// <summary>
+        /// Opens the late mod file with the given path.
+        /// </summary>
+        /// <param name="path">The path of the late mod file to open</param>
+        /// <returns>A stream for reading and writing to the late mod file</returns>
+        /// <exception cref="FileNotFoundException">If the given path does not point to a late mod file</exception>
+        public Stream OpenLateModFile(string path)
+        {
+            if(!_manifest.LateModFileNames.Contains(path))
+            {
+                throw new FileNotFoundException($"Cannot open late mod file {path} as it does not exist");
+            }
+
+            return OpenFile(path);
+        }
+
+        /// <summary>
+        /// Deletes the late mod file with the given path.
+        /// </summary>
+        /// <param name="path">The path of the late mod file to delete</param>
+        /// <exception cref="FileNotFoundException">If the given path does not point to a late mod file</exception>
+        public void DeleteLateModFile(string path)
+        {
+            if(!CanSaveManifest)
+            {
+                throw new InvalidOperationException("Cannot delete late mod file - QMOD is read only");
+            }
+
+            if(!_manifest.LateModFileNames.Contains(path))
+            {
+                throw new FileNotFoundException($"Cannot delete late mod file {path} as it does not exist");
+            }
+
+            Archive.GetEntry(path)?.Delete();
+            _manifest.LateModFileNames.Remove(path);
+        }
+
+        /// <summary>
+        /// Creates a late mod file from the given stream.
+        /// The stream will be copied into the entry for the late mod file.
+        /// If the late mod file already exists, it will be overwritten.
+        /// </summary>
+        /// <param name="path">Path of the late mod file</param>
+        /// <param name="sourceData">The stream to load the late mod file's data from</param>
+        /// <exception cref="ArgumentException">If a non-mod file in the qmod already exists with the given path</exception>
+        public async Task CreateLateModFileAsync(string path, Stream sourceData)
+        {
+            if(!CanSaveManifest)
+            {
+                throw new InvalidOperationException("Cannot create late mod file - QMOD is read only");
+            }
+
+            ZipArchiveEntry? existing = Archive.GetEntry(path);
+            if(existing != null)
+            {
+                if(LateModFileNames.Contains(path))
+                {
+                    DeleteEntry(existing, true);
+                }
+                else
+                {
+                    throw new ArgumentException($"Cannot create late mod file with path {path} as it is already taken up by another file in the qmod");
+                }
+            }
+
+            ZipArchiveEntry entry = Archive.CreateEntry(path);
+            await using Stream modStream = entry.Open();
+            await sourceData.CopyToAsync(modStream);
+            if(!_manifest.LateModFileNames.Contains(path))
+            {
+                _manifest.LateModFileNames.Add(path);
+            }
+        }
+
+
         /// <summary>
         /// Opens the given file copy for reading or writing.
         /// </summary>
