@@ -313,6 +313,7 @@ namespace QuestPatcher.QMod
         {
             RemoveMissing("mod file", throwExceptions, _manifest.ModFileNames, name => name);
             RemoveMissing("library file", throwExceptions, _manifest.LibraryFileNames, name => name);
+            RemoveMissing("late mod file", throwExceptions, _manifest.LateModFileNames, name => name);
             RemoveMissing("file copy", throwExceptions, _manifest.FileCopies, fileCopy => fileCopy.Name);
         }
 
@@ -540,7 +541,7 @@ namespace QuestPatcher.QMod
                 if(LibraryFileNames.Contains(path))
                 {
                     DeleteEntry(existing, true);
-                }   
+                }
                 else
                 {
                     throw new ArgumentException($"Cannot create library file with path {path} as it is already taken up by another file in the qmod");
