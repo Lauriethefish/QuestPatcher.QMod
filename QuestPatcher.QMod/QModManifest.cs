@@ -84,13 +84,13 @@ namespace QuestPatcher.QMod
         /// Library mods should be automatically uninstalled whenever no mods that depend on them are installed
         /// </summary>
         public bool IsLibrary { get; set; }
-        
+
         /// <summary>
         /// Modloader this mod is made for. Either of 'QuestLoader' or 'Scotland2'
         /// </summary>
         [JsonPropertyName("modloader")]
         [JsonConverter(typeof(ModLoaderJsonConverter))]
-        public ModLoader ModLoader { get; set; }
+        public ModLoader ModLoader { get; set; } = ModLoader.QuestLoader;
 
         /// <summary>
         /// Files copied to the mod loader's early mods directory
