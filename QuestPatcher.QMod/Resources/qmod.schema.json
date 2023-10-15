@@ -5,7 +5,7 @@
   "description": "A mod of the format described by QuestPatcher.",
   "examples": [
     {
-      "_QPVersion": "1.0.0",
+      "_QPVersion": "1.1.0",
       "name": "ExampleMod2",
       "id": "example-mod-2",
       "author": "Lauriethefish#6700",
@@ -64,12 +64,12 @@
         "0.1.1",
         "0.1.2",
         "1.0.0",
-        "1.0.1"
+        "1.1.0"
       ],
       "default": "",
-      "description": "The version of the schema to use for QuestPatcher. Must be 0.1.0, 0.1.1, 0.1.2, 1.0.0, 1.0.1",
+      "description": "The version of the schema to use for QuestPatcher. Must be 0.1.0, 0.1.1, 0.1.2, 1.0.0, or 1.1.0",
       "examples": [
-        "1.0.1"
+        "1.1.0"
       ],
       "title": "Schema Version",
       "type": "string"

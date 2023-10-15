@@ -1,5 +1,5 @@
 ﻿{
-  "_QPVersion": "1.0.1",
+  "_QPVersion": "1.1.0",
   "name": "ExampleMod",
   "id": "example-mod",
   "version": "2.0.0",
@@ -8,7 +8,7 @@
   "coverImage": "myCover.png",
   "porter": "Larrythefish",
   "description": "Example mod",
-  "isLibrary": fals
+  "isLibrary": false,
   "modFiles": [
     "libexample-mod.so"
   ]
