@@ -73,22 +73,8 @@ namespace QuestPatcher.QMod
         /// </summary>
         public ModLoader ModLoader
         {
-            get
-            {
-                switch(_manifest.ModLoader)
-                {
-                    case "QuestLoader":
-                        return QuestPatcher.QMod.ModLoader.QuestLoader;
-                    case "Scotland2":
-                        return QuestPatcher.QMod.ModLoader.Scotland2;
-                    default:
-                        return QuestPatcher.QMod.ModLoader.QuestLoader;
-                }
-            }
-            set {
-                
-                SetValue<string>(_manifest.ModLoader, Enum.GetName(typeof(QuestPatcher.QMod.ModLoader), value), v => _manifest.ModLoader = v);
-            }
+            get => _manifest.ModLoader;
+            set => SetValue(_manifest.ModLoader, ModLoader, v => _manifest.ModLoader = v);
         }
 
         /// <summary>

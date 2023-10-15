@@ -89,7 +89,8 @@ namespace QuestPatcher.QMod
         /// Modloader this mod is made for. Either of 'QuestLoader' or 'Scotland2'
         /// </summary>
         [JsonPropertyName("modloader")]
-        public string ModLoader { get; set; }
+        [JsonConverter(typeof(ModLoaderJsonConverter))]
+        public ModLoader ModLoader { get; set; }
 
         /// <summary>
         /// Files copied to the mod loader's early mods directory
