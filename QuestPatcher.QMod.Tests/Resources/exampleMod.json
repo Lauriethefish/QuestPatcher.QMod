@@ -8,6 +8,7 @@
   "packageVersion": "1.0.0",
   "coverImage": "myCover.png",
   "porter": "Larrythefish",
+  "modloader": "Scotland2",
   "description": "Example mod",
   "isLibrary": false,
   "modFiles": [
@@ -15,6 +16,9 @@
   ],
   "libraryFiles": [
     "libmy-library.so"
+  ],
+  "lateModFiles": [
+    "libmy-latemod.so"
   ],
   "dependencies": [
     {

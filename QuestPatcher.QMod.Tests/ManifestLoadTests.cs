@@ -25,6 +25,9 @@ namespace QuestPatcher.QMod.Tests
             Assert.Equal("Example mod", manifest.Description);
             Assert.Equal(new List<string> {"libexample-mod.so"}, manifest.ModFileNames);
             Assert.Equal(new List<string> {"libmy-library.so"}, manifest.LibraryFileNames);
+            Assert.Equal(new List<string> { "libmy-latemod.so" }, manifest.LateModFileNames);
+
+            Assert.Equal(ModLoader.Scotland2, manifest.ModLoader);
 
             Assert.Single(manifest.Dependencies);
             Dependency dependency = manifest.Dependencies[0];
@@ -42,6 +45,17 @@ namespace QuestPatcher.QMod.Tests
             Assert.Equal("gtmap", extension.Extension);
             Assert.Equal("/sdcard/ModData/com.AnotherAxiom.GorillaTag/Mods/MonkeMapLoader/CustomMaps/", extension.Destination);
         }
+
+        [Fact]
+        public async Task TestNoModloaderSpecified()
+        {
+            await using Stream manifestStream = ResourceUtils.OpenResource("noModloader.json");
+            QModManifest manifest = await QModManifest.ParseAsync(manifestStream);
+
+            // QuestLoader should be the default
+            Assert.Equal(ModLoader.QuestLoader, manifest.ModLoader);
+        }
+        
 
         [Fact]
         public async Task TestInvalidSchemaVersionLoad()
