@@ -216,7 +216,7 @@ namespace QuestPatcher.QMod
         /// <summary>
         /// Creates a new <see cref="QModManifest"/> with a deep clone.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A deep clone of this manifest</returns>
         public QModManifest DeepClone()
         {
             return new QModManifest(Id, Name, Version, PackageId, PackageVersion, Author)
@@ -230,14 +230,16 @@ namespace QuestPatcher.QMod
                 Dependencies = Dependencies.Select(dep => new Dependency(dep.Id, dep.VersionRangeString, dep.DownloadUrlString)).ToList(),
                 CopyExtensions = CopyExtensions.Select(ext => new CopyExtension(ext.Extension, ext.Destination)).ToList(),
                 ModFileNames = ModFileNames.ToList(),
-                LibraryFileNames = LibraryFileNames.ToList()
+                LateModFileNames = LateModFileNames.ToList(),
+                LibraryFileNames = LibraryFileNames.ToList(),
+                ModLoader = ModLoader
             };
         }
 
         /// <summary>
         /// Creates a new <see cref="QModManifest"/> with a shallow copy
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A shallow clone of this manifest</returns>
         public QModManifest ShallowClone()
         {
             return (QModManifest) MemberwiseClone();
