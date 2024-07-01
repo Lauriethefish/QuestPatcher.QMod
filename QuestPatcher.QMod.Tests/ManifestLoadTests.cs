@@ -29,11 +29,17 @@ namespace QuestPatcher.QMod.Tests
 
             Assert.Equal(ModLoader.Scotland2, manifest.ModLoader);
 
-            Assert.Single(manifest.Dependencies);
-            Dependency dependency = manifest.Dependencies[0];
-            Assert.Equal("my-dependency", dependency.Id);
-            Assert.Equal("^0.1.0", dependency.VersionRangeString);
-            Assert.Equal("https://somesite.com/my_dependency_0_1_0.qmod", dependency.DownloadUrlString);
+            Assert.Equal(2, manifest.Dependencies.Count);
+            Dependency requiredDependency = manifest.Dependencies[0];
+            Assert.Equal("my-dependency", requiredDependency.Id);
+            Assert.Equal("^0.1.0", requiredDependency.VersionRangeString);
+            Assert.Equal("https://somesite.com/my_dependency_0_1_0.qmod", requiredDependency.DownloadUrlString);
+            Assert.True(requiredDependency.Required);
+            Dependency optionalDependency = manifest.Dependencies[1];
+            Assert.Equal("my-optional-dependency", optionalDependency.Id);
+            Assert.Equal("^0.1.0", optionalDependency.VersionRangeString);
+            Assert.Equal("https://somesite.com/my_optional_dependency_0_1_0.qmod", optionalDependency.DownloadUrlString);
+            Assert.False(optionalDependency.Required);
 
             Assert.Single(manifest.FileCopies);
             FileCopy fileCopy = manifest.FileCopies[0];
