@@ -228,7 +228,7 @@ namespace QuestPatcher.QMod
                 Porter = Porter,
                 SchemaVersion = SchemaVersion,
                 FileCopies = FileCopies.Select(copy => new FileCopy(copy.Name, copy.Destination)).ToList(),
-                Dependencies = Dependencies.Select(dep => new Dependency(dep.Id, dep.VersionRangeString, dep.DownloadUrlString)).ToList(),
+                Dependencies = Dependencies.Select(dep => new Dependency(dep.Id, dep.VersionRangeString, dep.DownloadUrlString, dep.Required)).ToList(),
                 CopyExtensions = CopyExtensions.Select(ext => new CopyExtension(ext.Extension, ext.Destination)).ToList(),
                 ModFileNames = ModFileNames.ToList(),
                 LateModFileNames = LateModFileNames.ToList(),
