@@ -40,6 +40,9 @@ namespace QuestPatcher.QMod
             set => VersionRange = Range.Parse(value);
         }
 
+        [JsonPropertyName("required")]
+        public bool Required { get; set; }
+
         /// <summary>
         /// Supported version range of the dependency. Installers should check that if the dependency is installed, it is within this range.
         ///
@@ -83,11 +86,16 @@ namespace QuestPatcher.QMod
         /// <param name="id">The ID of the mod depended on, must not contain whitespace</param>
         /// <param name="versionRangeString">The semver version range of supported versions of the mod</param>
         /// <param name="downloadUrlString">The URL to download the dependency from if it is not installed, null for none (default)</param>
-        public Dependency(string id, string versionRangeString = "*", string? downloadUrlString = null)
+        /// <param name="required">If true, then this dependency must be installed within the correct version range for the mod to be installed.
+        /// If false, then:
+        /// - If the dependency is not installed, this mod can install with no further checks.
+        /// - If the dependency is installed, it MUST be within the specified version range and the installer should attempt to upgrade it if necessary.</param>
+        public Dependency(string id, string versionRangeString = "*", string? downloadUrlString = null, bool required = true)
         {
             Id = id;
             VersionRangeString = versionRangeString;
             DownloadUrlString = downloadUrlString;
+            Required = required;
             
             // _id has been set by assigning the property.
             // We don't just assign the field directly as we need to check that the ID string is valid using the property setter

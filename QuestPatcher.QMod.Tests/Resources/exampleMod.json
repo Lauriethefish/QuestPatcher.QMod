@@ -1,5 +1,5 @@
 ﻿{
-  "_QPVersion": "1.1.0",
+  "_QPVersion": "1.2.0",
   "name": "ExampleMod",
   "id": "example-mod",
   "author": "Lauriethefish",
@@ -25,6 +25,12 @@
       "id": "my-dependency",
       "version": "^0.1.0",
       "downloadIfMissing": "https://somesite.com/my_dependency_0_1_0.qmod"
+    },
+    {
+      "id": "my-optional-dependency",
+      "version": "^0.1.0",
+      "downloadIfMissing": "https://somesite.com/my_optional_dependency_0_1_0.qmod",
+      "required": false
     }
   ],
   "fileCopies": [
