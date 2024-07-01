@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
-    <AssemblyVersion>2.1.1.0</AssemblyVersion>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup>
     <Title>QuestPatcher.QMod</Title>
-    <PackageVersion>2.1.1</PackageVersion>
+    <PackageVersion>2.2.0</PackageVersion>
     <Authors>Lauriethefish</Authors>
     <Description>A library for the loading and saving of QMOD files, used by QuestPatcher.</Description>
     <Copyright>Copyright 2021 Laurie ?</Copyright>
