@@ -17,7 +17,7 @@
     <RepositoryUrl>https://github.com/Lauriethefish/QuestPatcher.QMod.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>qmod, beat saber, questpatcher</PackageTags>
-    <PackageReleaseNotes>Fixed QModManifest#DeepClone to include new properties</PackageReleaseNotes>
+    <PackageReleaseNotes>Added support for QMOD version 1.2.0: Optional dependencies</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
