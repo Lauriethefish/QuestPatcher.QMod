@@ -10,9 +10,9 @@ namespace QuestPatcher.QMod
         {
             if (reader.TokenType == JsonTokenType.String)
             {
-                var strs = Enum.GetNames<ModLoader>();
+                var strs = Enum.GetNames(typeof(ModLoader));
                 try{
-                    if (Enum.TryParse(str.Find(t => t.Equals(reader.GetString(), StringComparison.InvariantCultureIgnoreCase)), out ModLoader modLoader))
+                    if (Enum.TryParse(strs.Find(t => t.Equals(reader.GetString(), StringComparison.InvariantCultureIgnoreCase)), out ModLoader modLoader))
                     {
                         return modLoader;
                     }
