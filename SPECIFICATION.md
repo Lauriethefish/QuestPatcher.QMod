@@ -4,7 +4,7 @@ Outlined below are the requirements for a valid version 1.1.0 QMOD file:
 - A QMOD file MUST be a valid ZIP file, according to the PKWARE ZIP specification, version 6.3.10.
 - A QMOD file MUST NOT use the ZIP64 format.
 - A QMOD file MUST contain **exactly one** entry with full name `mod.json`.
-- The `mod.json` entry MUST contain valid JSON (ECMA-404) data, in UTF-8 encoding.
+- The `mod.json` entry MUST contain valid JSON (ECMA-404) data, in UTF-8 encoding with no BOM.
 - The JSON data in the `mod.json` MUST comply with the [mod.json schema](./QuestPatcher.QMod/Resources/qmod.schema.json).
 
 The below are strong suggestions for the values of certain properties in the `mod.json`. They are not strictly required, but SHOULD be adhered to.
