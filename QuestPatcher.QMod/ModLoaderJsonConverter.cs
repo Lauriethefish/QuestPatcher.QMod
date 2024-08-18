@@ -19,7 +19,7 @@ namespace QuestPatcher.QMod
                 }
                 catch(ArgumentNullException e)
                 {
-                    throw new AggrigateException([new JsonException($"Unable to convert '{reader.GetString()}' to ModLoader enum."), e]);
+                    throw new AggregateException([new JsonException($"Unable to convert '{reader.GetString()}' to ModLoader enum."), e]);
                 }
             }
             else if (reader.TokenType == JsonTokenType.Number)
