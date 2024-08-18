@@ -12,7 +12,7 @@ namespace QuestPatcher.QMod
             {
                 var strs = Enum.GetNames<ModLoader>();
                 try{
-                    if (Enum.TryParse(str.Find(t => t.Equals(reader.GetString(), StringComparison.InvariantCultureIgnoreCase), out ModLoader modLoader))
+                    if (Enum.TryParse(str.Find(t => t.Equals(reader.GetString(), StringComparison.InvariantCultureIgnoreCase)), out ModLoader modLoader))
                     {
                         return modLoader;
                     }
