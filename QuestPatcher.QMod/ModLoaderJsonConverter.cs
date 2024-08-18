@@ -12,7 +12,7 @@ namespace QuestPatcher.QMod
             {
                 var strs = Enum.GetNames(typeof(ModLoader));
                 try{
-                    if (Enum.TryParse(strs.Find(t => t.Equals(reader.GetString(), StringComparison.InvariantCultureIgnoreCase)), out ModLoader modLoader))
+                    if (Enum.TryParse(Array.Find(strs, t => t.Equals(reader.GetString(), StringComparison.InvariantCultureIgnoreCase)), out ModLoader modLoader))
                     {
                         return modLoader;
                     }
@@ -22,8 +22,6 @@ namespace QuestPatcher.QMod
                     throw new AggregateException(new Exception[]{new JsonException($"Unable to convert '{reader.GetString()}' to ModLoader enum."), e});
                 }
             }
-            else if (reader.TokenType == JsonTokenType.Number)
-                return (ModLoader)reader.GetInt64();
 
             throw new JsonException($"Unable to convert '{reader.GetString()}' to ModLoader enum.");
         }
