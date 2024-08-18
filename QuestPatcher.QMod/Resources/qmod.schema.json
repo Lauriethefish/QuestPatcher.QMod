@@ -1,4 +1,4 @@
-﻿{
+{
   "$id": "https://raw.githubusercontent.com/Lauriethefish/QuestPatcher.QMod/main/QuestPatcher.QMod/Resources/qmod.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "default": {},
