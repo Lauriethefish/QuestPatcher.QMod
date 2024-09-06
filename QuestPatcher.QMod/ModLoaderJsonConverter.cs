@@ -12,7 +12,8 @@ namespace QuestPatcher.QMod
             {
                 var strs = Enum.GetNames(typeof(ModLoader));
                 try{
-                    if (Enum.TryParse(Array.Find(strs, t => t.Equals(reader.GetString(), StringComparison.InvariantCultureIgnoreCase)), out ModLoader modLoader))
+                    var str = reader.GetString(); // lambda function can't have reader.GetString() for the equals so this will have to do
+                    if (Enum.TryParse(Array.Find(strs, t => t.Equals(str, StringComparison.InvariantCultureIgnoreCase)), out ModLoader modLoader))
                     {
                         return modLoader;
                     }
