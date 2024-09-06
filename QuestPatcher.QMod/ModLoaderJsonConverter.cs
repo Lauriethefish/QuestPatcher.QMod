@@ -10,9 +10,17 @@ namespace QuestPatcher.QMod
         {
             if (reader.TokenType == JsonTokenType.String)
             {
-                if (Enum.TryParse(reader.GetString(), out ModLoader modLoader))
+                var strs = Enum.GetNames(typeof(ModLoader));
+                try{
+                    var str = reader.GetString(); // lambda function can't have reader.GetString() for the equals so this will have to do
+                    if (Enum.TryParse(Array.Find(strs, t => t.Equals(str, StringComparison.InvariantCultureIgnoreCase)), out ModLoader modLoader))
+                    {
+                        return modLoader;
+                    }
+                }
+                catch(ArgumentNullException e)
                 {
-                    return modLoader;
+                    throw new AggregateException(new Exception[]{new JsonException($"Unable to convert '{reader.GetString()}' to ModLoader enum."), e});
                 }
             }
 
